@@ -72,6 +72,7 @@
             Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "ucDashboard";
             Size = new Size(1319, 837);
+            Load += ucDashboard_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

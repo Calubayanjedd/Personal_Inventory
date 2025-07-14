@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             topPanel = new Panel();
+            btnMinimize = new Button();
             btnExit = new Button();
             navPanel = new Panel();
             btnLogout = new Button();
@@ -63,12 +64,25 @@
             // topPanel
             // 
             topPanel.BackColor = Color.LightGray;
+            topPanel.Controls.Add(btnMinimize);
             topPanel.Controls.Add(btnExit);
             topPanel.Dock = DockStyle.Top;
             topPanel.Location = new Point(0, 0);
             topPanel.Name = "topPanel";
             topPanel.Size = new Size(1569, 55);
             topPanel.TabIndex = 0;
+            // 
+            // btnMinimize
+            // 
+            btnMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMinimize.FlatStyle = FlatStyle.Flat;
+            btnMinimize.Location = new Point(1405, 10);
+            btnMinimize.Name = "btnMinimize";
+            btnMinimize.Size = new Size(73, 36);
+            btnMinimize.TabIndex = 4;
+            btnMinimize.Text = "–";
+            btnMinimize.UseVisualStyleBackColor = true;
+            btnMinimize.Click += button1_Click_2;
             // 
             // btnExit
             // 
@@ -349,6 +363,7 @@
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(1319, 837);
             mainPanel.TabIndex = 2;
+            mainPanel.Paint += mainPanel_Paint;
             // 
             // MainForm
             // 
@@ -399,5 +414,6 @@
         private Button btnReports;
         private Button btnLogout;
         private Panel fillerPanel;
+        private Button btnMinimize;
     }
 }

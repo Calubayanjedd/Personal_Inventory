@@ -155,5 +155,15 @@ namespace Personal_Inventory_for_Juntec
             CollapseAllSubpanels();
             LoadUserControl(new ucReports());
         }
+
+        private void mainPanel_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
