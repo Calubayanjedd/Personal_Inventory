@@ -37,6 +37,7 @@
             fillerPanel = new Panel();
             btnReports = new Button();
             customerSubpanel = new Panel();
+            btnCInventory = new Button();
             btnAddCustomer = new Button();
             btnViewCustomer = new Button();
             btnCustomer = new Button();
@@ -129,9 +130,9 @@
             // fillerPanel
             // 
             fillerPanel.Dock = DockStyle.Fill;
-            fillerPanel.Location = new Point(0, 580);
+            fillerPanel.Location = new Point(0, 641);
             fillerPanel.Name = "fillerPanel";
-            fillerPanel.Size = new Size(250, 257);
+            fillerPanel.Size = new Size(250, 196);
             fillerPanel.TabIndex = 8;
             // 
             // btnReports
@@ -140,7 +141,7 @@
             btnReports.FlatAppearance.BorderSize = 0;
             btnReports.FlatAppearance.MouseOverBackColor = Color.White;
             btnReports.FlatStyle = FlatStyle.Flat;
-            btnReports.Location = new Point(0, 515);
+            btnReports.Location = new Point(0, 576);
             btnReports.Name = "btnReports";
             btnReports.Padding = new Padding(20, 0, 0, 0);
             btnReports.Size = new Size(250, 65);
@@ -152,13 +153,30 @@
             // 
             // customerSubpanel
             // 
+            customerSubpanel.Controls.Add(btnCInventory);
             customerSubpanel.Controls.Add(btnAddCustomer);
             customerSubpanel.Controls.Add(btnViewCustomer);
             customerSubpanel.Dock = DockStyle.Top;
             customerSubpanel.Location = new Point(0, 386);
             customerSubpanel.Name = "customerSubpanel";
-            customerSubpanel.Size = new Size(250, 129);
+            customerSubpanel.Size = new Size(250, 190);
             customerSubpanel.TabIndex = 6;
+            // 
+            // btnCInventory
+            // 
+            btnCInventory.Dock = DockStyle.Top;
+            btnCInventory.FlatAppearance.BorderSize = 0;
+            btnCInventory.FlatAppearance.MouseOverBackColor = Color.White;
+            btnCInventory.FlatStyle = FlatStyle.Flat;
+            btnCInventory.Location = new Point(0, 130);
+            btnCInventory.Name = "btnCInventory";
+            btnCInventory.Padding = new Padding(20, 0, 0, 0);
+            btnCInventory.Size = new Size(250, 65);
+            btnCInventory.TabIndex = 2;
+            btnCInventory.Text = "👤📦 Customer's Inventory";
+            btnCInventory.TextAlign = ContentAlignment.MiddleLeft;
+            btnCInventory.UseVisualStyleBackColor = true;
+            btnCInventory.Click += btnCInventory_Click;
             // 
             // btnAddCustomer
             // 
@@ -376,5 +394,6 @@
         private Button btnLogout;
         private Panel fillerPanel;
         private Button btnMinimize;
+        private Button btnCInventory;
     }
 }
