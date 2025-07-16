@@ -104,6 +104,7 @@
             // 
             // btnRegister
             // 
+            btnRegister.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnRegister.Location = new Point(1010, 714);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(250, 64);
@@ -115,6 +116,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             Controls.Add(btnRegister);
             Controls.Add(label4);
             Controls.Add(label3);

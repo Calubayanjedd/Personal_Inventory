@@ -45,9 +45,6 @@
             btnViewInventory = new Button();
             btnInventory = new Button();
             btnDashboard = new Button();
-            profilePanel = new Panel();
-            lblName = new Label();
-            pictureBox1 = new PictureBox();
             menuPanel = new Panel();
             label1 = new Label();
             btnMenu = new Button();
@@ -56,8 +53,6 @@
             navPanel.SuspendLayout();
             customerSubpanel.SuspendLayout();
             inventorySubpanel.SuspendLayout();
-            profilePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menuPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -108,7 +103,6 @@
             navPanel.Controls.Add(inventorySubpanel);
             navPanel.Controls.Add(btnInventory);
             navPanel.Controls.Add(btnDashboard);
-            navPanel.Controls.Add(profilePanel);
             navPanel.Controls.Add(menuPanel);
             navPanel.Dock = DockStyle.Left;
             navPanel.Location = new Point(0, 55);
@@ -135,9 +129,9 @@
             // fillerPanel
             // 
             fillerPanel.Dock = DockStyle.Fill;
-            fillerPanel.Location = new Point(0, 771);
+            fillerPanel.Location = new Point(0, 580);
             fillerPanel.Name = "fillerPanel";
-            fillerPanel.Size = new Size(250, 66);
+            fillerPanel.Size = new Size(250, 257);
             fillerPanel.TabIndex = 8;
             // 
             // btnReports
@@ -146,7 +140,7 @@
             btnReports.FlatAppearance.BorderSize = 0;
             btnReports.FlatAppearance.MouseOverBackColor = Color.White;
             btnReports.FlatStyle = FlatStyle.Flat;
-            btnReports.Location = new Point(0, 706);
+            btnReports.Location = new Point(0, 515);
             btnReports.Name = "btnReports";
             btnReports.Padding = new Padding(20, 0, 0, 0);
             btnReports.Size = new Size(250, 65);
@@ -161,7 +155,7 @@
             customerSubpanel.Controls.Add(btnAddCustomer);
             customerSubpanel.Controls.Add(btnViewCustomer);
             customerSubpanel.Dock = DockStyle.Top;
-            customerSubpanel.Location = new Point(0, 577);
+            customerSubpanel.Location = new Point(0, 386);
             customerSubpanel.Name = "customerSubpanel";
             customerSubpanel.Size = new Size(250, 129);
             customerSubpanel.TabIndex = 6;
@@ -204,7 +198,7 @@
             btnCustomer.FlatAppearance.BorderSize = 0;
             btnCustomer.FlatAppearance.MouseOverBackColor = Color.White;
             btnCustomer.FlatStyle = FlatStyle.Flat;
-            btnCustomer.Location = new Point(0, 512);
+            btnCustomer.Location = new Point(0, 321);
             btnCustomer.Name = "btnCustomer";
             btnCustomer.Padding = new Padding(20, 0, 0, 0);
             btnCustomer.Size = new Size(250, 65);
@@ -219,7 +213,7 @@
             inventorySubpanel.Controls.Add(btnAddInventory);
             inventorySubpanel.Controls.Add(btnViewInventory);
             inventorySubpanel.Dock = DockStyle.Top;
-            inventorySubpanel.Location = new Point(0, 381);
+            inventorySubpanel.Location = new Point(0, 190);
             inventorySubpanel.Name = "inventorySubpanel";
             inventorySubpanel.Size = new Size(250, 131);
             inventorySubpanel.TabIndex = 4;
@@ -262,7 +256,7 @@
             btnInventory.FlatAppearance.BorderSize = 0;
             btnInventory.FlatAppearance.MouseOverBackColor = Color.White;
             btnInventory.FlatStyle = FlatStyle.Flat;
-            btnInventory.Location = new Point(0, 316);
+            btnInventory.Location = new Point(0, 125);
             btnInventory.Name = "btnInventory";
             btnInventory.Padding = new Padding(20, 0, 0, 0);
             btnInventory.Size = new Size(250, 65);
@@ -281,7 +275,7 @@
             btnDashboard.FlatAppearance.MouseOverBackColor = Color.White;
             btnDashboard.FlatStyle = FlatStyle.Flat;
             btnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDashboard.Location = new Point(0, 251);
+            btnDashboard.Location = new Point(0, 60);
             btnDashboard.Name = "btnDashboard";
             btnDashboard.Padding = new Padding(20, 0, 0, 0);
             btnDashboard.Size = new Size(250, 65);
@@ -290,33 +284,6 @@
             btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
             btnDashboard.UseVisualStyleBackColor = false;
             btnDashboard.Click += btnDashboard_Click;
-            // 
-            // profilePanel
-            // 
-            profilePanel.Controls.Add(lblName);
-            profilePanel.Controls.Add(pictureBox1);
-            profilePanel.Dock = DockStyle.Top;
-            profilePanel.Location = new Point(0, 60);
-            profilePanel.Name = "profilePanel";
-            profilePanel.Size = new Size(250, 191);
-            profilePanel.TabIndex = 1;
-            // 
-            // lblName
-            // 
-            lblName.AutoSize = true;
-            lblName.Location = new Point(91, 145);
-            lblName.Name = "lblName";
-            lblName.Size = new Size(49, 19);
-            lblName.TabIndex = 1;
-            lblName.Text = "Name";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(58, 6);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(120, 120);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
             // 
             // menuPanel
             // 
@@ -382,9 +349,6 @@
             navPanel.ResumeLayout(false);
             customerSubpanel.ResumeLayout(false);
             inventorySubpanel.ResumeLayout(false);
-            profilePanel.ResumeLayout(false);
-            profilePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             menuPanel.ResumeLayout(false);
             menuPanel.PerformLayout();
             ResumeLayout(false);
@@ -398,9 +362,6 @@
         private Panel mainPanel;
         private Panel menuPanel;
         private Button btnMenu;
-        private Panel profilePanel;
-        private Label lblName;
-        private PictureBox pictureBox1;
         private Label label1;
         private Panel inventorySubpanel;
         private Button btnInventory;
