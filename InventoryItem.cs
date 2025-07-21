@@ -8,10 +8,22 @@ namespace Personal_Inventory_for_Juntec
 {
     public class InventoryItem
     {
-        public string ItemId { get; set; }
-        public string ItemName { get; set; }
-        public string ItemType { get; set; }
-        public string ItemSize { get; set; }
-        public string ItemCost { get; set; }
+        public int MaterialID { get; set; }
+        public string? PrecisionLevel { get; set; }
+        public string? Material { get; set; }
+        public string? Type { get; set; }
+        public char ShapeCode { get; set; }
+        public char BaseCode { get; set; }
+        public decimal BaseValue { get; set; }
+        public decimal Diameter { get; set; }
+        public decimal Length { get; set; }
+        public required string PressureRange { get; set; }
+        public decimal PressureMax { get; set; }
+        public decimal PressureMin { get; set; }
+        public decimal RadiusTolerance { get; set; }
+        public decimal Height { get; set; }
+        public int Quantity { get; set; }
+
+        public decimal Cost { get; set; }
     }
 }
