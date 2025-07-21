@@ -13,6 +13,7 @@ namespace Personal_Inventory_for_Juntec
 {
     public partial class MainForm : Form
     {
+        private ucAddInventory ucAddInventory;
         public MainForm()
         {
             InitializeComponent();
@@ -22,6 +23,9 @@ namespace Personal_Inventory_for_Juntec
             EnableFormDrag(mainPanel);
             EnableFormDrag(navPanel);
             EnableFormDrag(topPanel);
+            CollapseAllSubpanels();
+            LoadUserControl(new ucDashboard());
+            ucAddInventory = new ucAddInventory();
         }
 
         [DllImport("user32.dll")]
@@ -134,7 +138,7 @@ namespace Personal_Inventory_for_Juntec
 
         private void btnAddInventory_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new ucAddInventory());
+            LoadUserControl(ucAddInventory);
         }
 
         private void btnViewInventory_Click(object sender, EventArgs e)
