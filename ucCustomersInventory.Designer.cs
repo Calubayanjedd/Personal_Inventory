@@ -50,18 +50,19 @@
             // dgvCustomersInventory
             // 
             dgvCustomersInventory.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            dgvCustomersInventory.BackgroundColor = Color.White;
             dgvCustomersInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCustomersInventory.Location = new Point(86, 159);
+            dgvCustomersInventory.Location = new Point(54, 159);
             dgvCustomersInventory.Margin = new Padding(4, 3, 4, 3);
             dgvCustomersInventory.Name = "dgvCustomersInventory";
             dgvCustomersInventory.RowHeadersWidth = 51;
-            dgvCustomersInventory.Size = new Size(1132, 575);
+            dgvCustomersInventory.Size = new Size(1208, 575);
             dgvCustomersInventory.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(86, 93);
+            label2.Location = new Point(54, 93);
             label2.Name = "label2";
             label2.Size = new Size(142, 22);
             label2.TabIndex = 3;
@@ -69,7 +70,7 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(234, 90);
+            txtSearch.Location = new Point(202, 90);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(324, 30);
             txtSearch.TabIndex = 4;
@@ -81,7 +82,7 @@
             btnSearch.FlatAppearance.MouseOverBackColor = Color.Silver;
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(564, 84);
+            btnSearch.Location = new Point(532, 84);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(119, 40);
             btnSearch.TabIndex = 5;
