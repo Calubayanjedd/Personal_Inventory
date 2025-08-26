@@ -16,5 +16,10 @@ namespace Personal_Inventory_for_Juntec
         {
             InitializeComponent();
         }
+
+        private void ucAddCustomers_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -30,12 +30,10 @@
         {
             label1 = new Label();
             textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
             label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
             btnRegister = new Button();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -44,91 +42,67 @@
             label1.Font = new Font("Times New Roman", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(8, 5);
             label1.Name = "label1";
-            label1.Size = new Size(287, 45);
+            label1.Size = new Size(271, 45);
             label1.TabIndex = 0;
-            label1.Text = "Add Customers";
+            label1.Text = "Add Customer";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(249, 134);
+            textBox1.Location = new Point(378, 107);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(396, 30);
             textBox1.TabIndex = 1;
             // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(249, 218);
-            textBox2.Margin = new Padding(3, 2, 3, 2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(396, 30);
-            textBox2.TabIndex = 2;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(249, 301);
-            textBox3.Margin = new Padding(3, 2, 3, 2);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(396, 30);
-            textBox3.TabIndex = 3;
-            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(113, 142);
+            label2.Location = new Point(149, 110);
             label2.Name = "label2";
-            label2.Size = new Size(89, 22);
+            label2.Size = new Size(142, 22);
             label2.TabIndex = 4;
-            label2.Text = "Fullname:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(120, 221);
-            label3.Name = "label3";
-            label3.Size = new Size(82, 22);
-            label3.TabIndex = 5;
-            label3.Text = "Address:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(58, 304);
-            label4.Name = "label4";
-            label4.Size = new Size(144, 22);
-            label4.TabIndex = 6;
-            label4.Text = "Contact Number:";
+            label2.Text = "Customer Name:";
             // 
             // btnRegister
             // 
             btnRegister.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnRegister.Location = new Point(1010, 714);
+            btnRegister.FlatAppearance.BorderSize = 0;
+            btnRegister.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            btnRegister.Location = new Point(1082, 714);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(250, 64);
             btnRegister.TabIndex = 7;
             btnRegister.Text = "Register";
             btnRegister.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(label2);
+            panel1.Location = new Point(211, 138);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(913, 497);
+            panel1.TabIndex = 8;
+            // 
             // ucAddCustomers
             // 
             AutoScaleDimensions = new SizeF(11F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
+            BackColor = Color.Silver;
+            Controls.Add(panel1);
             Controls.Add(btnRegister);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
             Controls.Add(label1);
             Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 3, 4, 3);
             Name = "ucAddCustomers";
-            Size = new Size(1319, 837);
+            Size = new Size(1391, 861);
+            Load += ucAddCustomers_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -137,11 +111,8 @@
 
         private Label label1;
         private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
         private Label label2;
-        private Label label3;
-        private Label label4;
         private Button btnRegister;
+        private Panel panel1;
     }
 }

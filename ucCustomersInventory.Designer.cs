@@ -33,6 +33,8 @@
             label2 = new Label();
             txtSearch = new TextBox();
             btnSearch = new Button();
+            btnClear = new Button();
+            btnExport = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCustomersInventory).BeginInit();
             SuspendLayout();
             // 
@@ -52,11 +54,11 @@
             dgvCustomersInventory.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             dgvCustomersInventory.BackgroundColor = Color.White;
             dgvCustomersInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCustomersInventory.Location = new Point(54, 159);
+            dgvCustomersInventory.Location = new Point(16, 168);
             dgvCustomersInventory.Margin = new Padding(4, 3, 4, 3);
             dgvCustomersInventory.Name = "dgvCustomersInventory";
             dgvCustomersInventory.RowHeadersWidth = 51;
-            dgvCustomersInventory.Size = new Size(1208, 575);
+            dgvCustomersInventory.Size = new Size(1362, 575);
             dgvCustomersInventory.TabIndex = 2;
             // 
             // label2
@@ -82,7 +84,7 @@
             btnSearch.FlatAppearance.MouseOverBackColor = Color.Silver;
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(532, 84);
+            btnSearch.Location = new Point(681, 84);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(119, 40);
             btnSearch.TabIndex = 5;
@@ -90,10 +92,43 @@
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
             // 
+            // btnClear
+            // 
+            btnClear.BackColor = Color.DimGray;
+            btnClear.FlatAppearance.BorderSize = 0;
+            btnClear.FlatAppearance.MouseOverBackColor = Color.Silver;
+            btnClear.FlatStyle = FlatStyle.Flat;
+            btnClear.ForeColor = Color.White;
+            btnClear.Location = new Point(546, 84);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(119, 40);
+            btnClear.TabIndex = 6;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
+            // 
+            // btnExport
+            // 
+            btnExport.BackColor = Color.DimGray;
+            btnExport.FlatAppearance.BorderSize = 0;
+            btnExport.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            btnExport.FlatStyle = FlatStyle.Flat;
+            btnExport.ForeColor = Color.White;
+            btnExport.Location = new Point(1178, 84);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(119, 40);
+            btnExport.TabIndex = 7;
+            btnExport.Text = "Export";
+            btnExport.UseVisualStyleBackColor = false;
+            btnExport.Click += btnExport_Click;
+            // 
             // ucCustomersInventory
             // 
             AutoScaleDimensions = new SizeF(11F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Silver;
+            Controls.Add(btnExport);
+            Controls.Add(btnClear);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
             Controls.Add(label2);
@@ -102,7 +137,7 @@
             Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 3, 4, 3);
             Name = "ucCustomersInventory";
-            Size = new Size(1319, 837);
+            Size = new Size(1391, 861);
             Load += ucCustomersInventory_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCustomersInventory).EndInit();
             ResumeLayout(false);
@@ -116,5 +151,7 @@
         private Label label2;
         private TextBox txtSearch;
         private Button btnSearch;
+        private Button btnClear;
+        private Button btnExport;
     }
 }

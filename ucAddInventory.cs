@@ -85,8 +85,7 @@ namespace Personal_Inventory_for_Juntec
         }
         private void ClearInventoryFields()
         {
-            txtPrecision.Text = "";
-            txtMaterial.Text = "";
+            txtPartNumber.Text = "";
             txtType.Text = "";
             txtShape.Text = "";
             txtBaseType.Text = "";
@@ -106,8 +105,7 @@ namespace Personal_Inventory_for_Juntec
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txtPrecision.Text) ||
-                    string.IsNullOrWhiteSpace(txtMaterial.Text) ||
+                if (string.IsNullOrWhiteSpace(txtPartNumber.Text) ||
                     string.IsNullOrWhiteSpace(txtType.Text) ||
                     string.IsNullOrWhiteSpace(txtShape.Text) ||
                     string.IsNullOrWhiteSpace(txtBaseType.Text) ||
@@ -153,26 +151,15 @@ namespace Personal_Inventory_for_Juntec
                     return;
                 }
 
-                using (SqlConnection conn = new SqlConnection("Data Source=RCALUBAYAN\\SQLEXPRESS;Initial Catalog=PersonalDB;Integrated Security=True;Trust Server Certificate=True"))
+                using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=PersonalDB;Integrated Security=True;"))
                 {
                     conn.Open();
 
-                    string query = @"
-                INSERT INTO inventory (
-                precisionLevel, material, type, shapeCode, baseCode,
-                baseValue, diameter, length,
-                pressureRange, pressureMax, pressureMin,
-                radiusTolerance, height, quantity, cost, notes)
-                VALUES (
-                @precisionLevel, @material, @type, @shapeCode, @baseCode,
-                @baseValue, @diameter, @length,
-                @pressureRange, @pressureMax, @pressureMin,
-                @radiusTolerance, @height, @quantity, @cost, @notes)";
+                    string query = "INSERT INTO inventory (partNumber, type, shapeCode, baseCode, baseValue, diameter, length, pressureRange, pressureMax, pressureMin, radiusTolerance, height, quantity, cost) VALUES ( @partNumber, @type, @shapeCode, @baseCode, @baseValue, @diameter, @length, @pressureRange, @pressureMax, @pressureMin, @radiusTolerance, @height, @quantity, @cost)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@precisionLevel", txtPrecision.Text.Trim());
-                        cmd.Parameters.AddWithValue("@material", txtMaterial.Text.Trim());
+                        cmd.Parameters.AddWithValue("@partNumber", txtPartNumber.Text.Trim());
                         cmd.Parameters.AddWithValue("@type", txtType.Text.Trim());
                         cmd.Parameters.AddWithValue("@shapeCode", txtShape.Text.Trim());
                         cmd.Parameters.AddWithValue("@baseCode", txtBaseType.Text.Trim());
@@ -186,7 +173,6 @@ namespace Personal_Inventory_for_Juntec
                         cmd.Parameters.AddWithValue("@height", h);
                         cmd.Parameters.AddWithValue("@quantity", qty);
                         cmd.Parameters.AddWithValue("@cost", c);
-                        cmd.Parameters.AddWithValue("@notes", txtNote.Text.Trim());
 
                         cmd.ExecuteNonQuery();
                     }

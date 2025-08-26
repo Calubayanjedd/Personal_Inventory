@@ -18,7 +18,11 @@ namespace Personal_Inventory_for_Juntec
         public ucViewInventory()
         {
             InitializeComponent();
+        }
 
+        public void RefreshInventory()
+        {
+            LoadInventory();
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -29,25 +33,25 @@ namespace Personal_Inventory_for_Juntec
         private void ucViewInventory_Load(object sender, EventArgs e)
         {
             LoadInventory();
-            LoadFilterValues("precisionLevel", cbPrecision);
-            LoadFilterValues("material", cbMaterial);
+            LoadFilterValues("partNumber", cbPartNumber);
             LoadFilterValues("type", cbType);
             LoadFilterValues("shapeCode", cbShape);
             LoadFilterValues("baseCode", cbBase);
             LoadFilterValues("baseValue", cbBaseValue);
+            LoadFilterValues("diameter", cbDiameter);
+            LoadFilterValues("length", cbLength);
+            LoadFilterValues("pressureRange", cbPRange);
         }
 
         private void LoadInventory()
         {
-            lblLoading.Visible = true;
-
             try
             {
-                using (SqlConnection conn = new SqlConnection("Data Source=RCALUBAYAN\\SQLEXPRESS;Initial Catalog=PersonalDB;Integrated Security=True;Trust Server Certificate=True"))
+                using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=PersonalDB;Integrated Security=True;"))
                 {
                     conn.Open();
 
-                    string query = "SELECT materialID, precisionLevel, material, type, shapeCode, baseCode, baseValue, diameter, length, pressureMax, pressureMin, radiusTolerance, height, quantity, cost FROM inventory";
+                    string query = "SELECT inventoryID, partNumber, type, shapeCode, baseCode, baseValue, diameter, length, pressureRange ,pressureMax, pressureMin, radiusTolerance, height, quantity, cost FROM inventory;";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -57,26 +61,33 @@ namespace Personal_Inventory_for_Juntec
 
                         dtgInventory.DataSource = inventoryTable;
                         dtgInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        dtgInventory.Columns["inventoryID"].Visible = false;
+                        dtgInventory.Columns["partNumber"].MinimumWidth = 150;
+                        //dtgInventory.Columns["dimension"].MinimumWidth = 200;
 
-                        /*dtgInventory.Columns["pressureRange"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                        dtgInventory.Columns["pressureRange"].MinimumWidth = 100;*/
-
-                        dtgInventory.Columns["materialID"].HeaderText = "ID";
-                        dtgInventory.Columns["precisionLevel"].HeaderText = "Precision";
-                        dtgInventory.Columns["material"].HeaderText = "Material";
+                        dtgInventory.Columns["partNumber"].HeaderText = "Part Number";
+                        dtgInventory.Columns["inventoryID"].HeaderText = "ID";
                         dtgInventory.Columns["type"].HeaderText = "Type";
                         dtgInventory.Columns["shapeCode"].HeaderText = "Shape";
                         dtgInventory.Columns["baseCode"].HeaderText = "B";
-                        dtgInventory.Columns["baseValue"].HeaderText = "Bvalue";
-                        dtgInventory.Columns["diameter"].HeaderText = "D (mm)";
-                        dtgInventory.Columns["length"].HeaderText = "L (mm)";
-                        // dtgInventory.Columns["pressureRange"].HeaderText = "P Range";
-                        dtgInventory.Columns["pressureMax"].HeaderText = "P·Max";
-                        dtgInventory.Columns["pressureMin"].HeaderText = "P·Min";
+                        dtgInventory.Columns["baseValue"].HeaderText = "B";
+                        dtgInventory.Columns["diameter"].HeaderText = "D";
+                        dtgInventory.Columns["length"].HeaderText = "L";
+                        dtgInventory.Columns["pressureRange"].HeaderText = "P";
+                        //dtgInventory.Columns["dimension"].HeaderText = "Dimension";
+                        dtgInventory.Columns["pressureMax"].HeaderText = "P·Kmax";
+                        dtgInventory.Columns["pressureMin"].HeaderText = "W";
                         dtgInventory.Columns["radiusTolerance"].HeaderText = "R";
                         dtgInventory.Columns["height"].HeaderText = "H";
                         dtgInventory.Columns["quantity"].HeaderText = "Qty";
                         dtgInventory.Columns["cost"].HeaderText = "Cost";
+
+                        string[] hiddenColumns = { "inventoryID", "height", "pressureMax", "baseCode" };
+                        foreach (string col in hiddenColumns)
+                        {
+                            if (dtgInventory.Columns.Contains(col))
+                                dtgInventory.Columns[col].Visible = false;
+                        }
                     }
                 }
             }
@@ -84,79 +95,84 @@ namespace Personal_Inventory_for_Juntec
             {
                 MessageBox.Show("Failed to load inventory: " + ex.Message);
             }
-            finally
-            {
-                lblLoading.Visible = false;
-            }
         }
 
         private void LoadFilterValues(string columnName, ComboBox comboBox)
         {
-            comboBox.Items.Clear();
-            comboBox.Items.Add("");
-
-            string query = $"SELECT DISTINCT {columnName} FROM inventory WHERE {columnName} IS NOT NULL";
-
-            using (SqlConnection conn = new SqlConnection("Data Source=RCALUBAYAN\\SQLEXPRESS;Initial Catalog=PersonalDB;Integrated Security=True;Trust Server Certificate=True"))
-            using (SqlCommand cmd = new SqlCommand(query, conn))
+            try
             {
-                try
+                comboBox.Items.Clear();
+                comboBox.Items.Add("");
+
+                string query = $"SELECT DISTINCT {columnName} FROM inventory WHERE {columnName} IS NOT NULL";
+
+                using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=PersonalDB;Integrated Security=True;"))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    conn.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                    try
                     {
-                        comboBox.Items.Add(reader[0].ToString());
+                        conn.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            comboBox.Items.Add(reader[0].ToString());
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Failed to load values for {columnName}: " + ex.Message);
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Failed to load values for {columnName}: " + ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading filter values: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void ApplyUniversalFilter()
         {
-            var view = (dtgInventory.DataSource as DataTable)?.DefaultView;
-            if (view == null) return;
+            try
+            {
+                var view = (dtgInventory.DataSource as DataTable)?.DefaultView;
+                if (view == null) return;
 
-            List<string> conditions = new List<string>();
+                List<string> conditions = new();
 
-            if (!string.IsNullOrWhiteSpace(cbPrecision.Text) && cbPrecision.Text != "All")
-                conditions.Add($"precisionLevel LIKE '%{cbPrecision.Text.Replace("'", "''")}%'");
+                if (!string.IsNullOrWhiteSpace(cbPartNumber.Text) && cbPartNumber.Text != "All")
+                    conditions.Add($"partNumber LIKE '%{cbPartNumber.Text.Replace("'", "''")}%'");
 
-            if (!string.IsNullOrWhiteSpace(cbMaterial.Text) && cbMaterial.Text != "All")
-                conditions.Add($"material LIKE '%{cbMaterial.Text.Replace("'", "''")}%'");
+                if (!string.IsNullOrWhiteSpace(cbType.Text) && cbType.Text != "All")
+                    conditions.Add($"type LIKE '%{cbType.Text.Replace("'", "''")}%'");
 
-            if (!string.IsNullOrWhiteSpace(cbType.Text) && cbType.Text != "All")
-                conditions.Add($"type LIKE '%{cbType.Text.Replace("'", "''")}%'");
+                if (!string.IsNullOrWhiteSpace(cbShape.Text) && cbShape.Text != "All")
+                    conditions.Add($"shapeCode LIKE '%{cbShape.Text.Replace("'", "''")}%'");
 
-            if (!string.IsNullOrWhiteSpace(cbShape.Text) && cbShape.Text != "All")
-                conditions.Add($"shapeCode LIKE '%{cbShape.Text.Replace("'", "''")}%'");
+                if (!string.IsNullOrWhiteSpace(cbBase.Text) && cbBase.Text != "All")
+                    conditions.Add($"baseCode LIKE '%{cbBase.Text.Replace("'", "''")}%'");
 
-            if (!string.IsNullOrWhiteSpace(cbBase.Text) && cbBase.Text != "All")
-                conditions.Add($"baseCode LIKE '%{cbBase.Text.Replace("'", "''")}%'");
+                if (!string.IsNullOrWhiteSpace(cbBaseValue.Text) && cbBaseValue.Text != "All")
+                    conditions.Add($"CONVERT(baseValue, 'System.String') LIKE '%{cbBaseValue.Text.Replace("'", "''")}%'");
 
-            if (!string.IsNullOrWhiteSpace(cbBaseValue.Text) && cbBaseValue.Text != "All")
-                conditions.Add($"CONVERT(baseValue, 'System.String') LIKE '%{cbBaseValue.Text.Replace("'", "''")}%'");
+                if (!string.IsNullOrWhiteSpace(cbDiameter.Text) && cbDiameter.Text != "All")
+                    conditions.Add($"CONVERT(diameter, 'System.String') LIKE '%{cbDiameter.Text.Replace("'", "''")}%'");
 
-            if (decimal.TryParse(txtDiameter.Text.Trim(), out decimal diameterValue))
-                conditions.Add($"diameter = {diameterValue}");
+                if (!string.IsNullOrWhiteSpace(cbLength.Text) && cbLength.Text != "All")
+                    conditions.Add($"CONVERT(length, 'System.String') LIKE '%{cbLength.Text.Replace("'", "''")}%'");
 
+                if (!string.IsNullOrWhiteSpace(cbPRange.Text) && cbPRange.Text != "All")
+                    conditions.Add($"pressureRange LIKE '%{cbPRange.Text.Replace("'", "''")}%'");
 
-            if (decimal.TryParse(txtLength.Text.Trim(), out decimal lengthValue))
-                conditions.Add($"length = {lengthValue}");
+                string filter = string.Join(" AND ", conditions);
+                view.RowFilter = filter;
 
-
-            string filter = string.Join(" AND ", conditions);
-            view.RowFilter = filter;
-
-            var filteredTable = view.ToTable();
+                var filteredTable = view.ToTable();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error applying filter: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
-
-
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -181,9 +197,8 @@ namespace Personal_Inventory_for_Juntec
                 {
                     var item = new InventoryItem
                     {
-                        MaterialID = Convert.ToInt32(dtgInventory.CurrentRow.Cells["materialID"].Value),
-                        PrecisionLevel = dtgInventory.CurrentRow.Cells["precisionLevel"].Value?.ToString(),
-                        Material = dtgInventory.CurrentRow.Cells["material"].Value?.ToString(),
+                        MaterialID = Convert.ToInt32(dtgInventory.CurrentRow.Cells["inventoryID"].Value),
+                        PartNumber = dtgInventory.CurrentRow.Cells["partNumber"].Value?.ToString() ?? "—",
                         Type = dtgInventory.CurrentRow.Cells["type"].Value?.ToString(),
                         ShapeCode = Convert.ToChar(dtgInventory.CurrentRow.Cells["shapeCode"].Value),
                         BaseCode = Convert.ToChar(dtgInventory.CurrentRow.Cells["baseCode"].Value),
@@ -199,7 +214,7 @@ namespace Personal_Inventory_for_Juntec
                         Cost = GetDecimalValue(dtgInventory.CurrentRow.Cells["cost"].Value)
                     };
 
-                    AssigningCustomer assignForm = new AssigningCustomer(item);
+                    AssigningCustomer assignForm = new AssigningCustomer(item, RefreshInventory);
                     assignForm.ShowDialog();
                 }
                 catch (Exception ex)
@@ -239,22 +254,85 @@ namespace Personal_Inventory_for_Juntec
 
         private void button1_Click(object sender, EventArgs e)
         {
-            cbPrecision.SelectedIndex = -1;
-            cbMaterial.SelectedIndex = -1;
-            cbType.SelectedIndex = -1;
-            cbShape.SelectedIndex = -1;
-            cbBase.SelectedIndex = -1;
-            cbBaseValue.SelectedIndex = -1;
-
-            txtDiameter.Text = "";
-            txtLength.Text = "";
-
-            // 🗑 Clear DataGridView filter and show all rows
-            var view = (inventoryTable as DataTable)?.DefaultView;
-            if (view != null)
+            try
             {
-                view.RowFilter = ""; // ✅ removes filtering
-                dtgInventory.DataSource = view.ToTable(); // refresh the grid
+                cbPartNumber.SelectedIndex = -1;
+                cbType.SelectedIndex = -1;
+                cbShape.SelectedIndex = -1;
+                cbBase.SelectedIndex = -1;
+                cbBaseValue.SelectedIndex = -1;
+                cbDiameter.SelectedIndex = -1;
+                cbLength.SelectedIndex = -1;
+                cbPRange.SelectedIndex = -1;
+
+                var view = (inventoryTable as DataTable)?.DefaultView;
+                if (view != null)
+                {
+                    view.RowFilter = "";
+                    dtgInventory.DataSource = view.ToTable();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error clearing filters: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cbDiameter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLength_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbPRange_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dtgInventory.CurrentRow != null && !dtgInventory.CurrentRow.IsNewRow)
+            {
+                try
+                {
+                    var item = new InventoryItem
+                    {
+                        MaterialID = Convert.ToInt32(dtgInventory.CurrentRow.Cells["inventoryID"].Value),
+                        PartNumber = dtgInventory.CurrentRow.Cells["partNumber"].Value?.ToString() ?? "—",
+                        Type = dtgInventory.CurrentRow.Cells["type"].Value?.ToString(),
+                        ShapeCode = Convert.ToChar(dtgInventory.CurrentRow.Cells["shapeCode"].Value),
+                        BaseCode = Convert.ToChar(dtgInventory.CurrentRow.Cells["baseCode"].Value),
+                        BaseValue = GetDecimalValue(dtgInventory.CurrentRow.Cells["baseValue"].Value),
+                        Diameter = GetDecimalValue(dtgInventory.CurrentRow.Cells["diameter"].Value),
+                        Length = GetDecimalValue(dtgInventory.CurrentRow.Cells["length"].Value),
+                        PressureRange = dtgInventory.CurrentRow.Cells["pressureRange"].Value?.ToString() ?? "—",
+                        PressureMax = GetDecimalValue(dtgInventory.CurrentRow.Cells["pressureMax"].Value),
+                        PressureMin = GetDecimalValue(dtgInventory.CurrentRow.Cells["pressureMin"].Value),
+                        RadiusTolerance = GetDecimalValue(dtgInventory.CurrentRow.Cells["radiusTolerance"].Value),
+                        Height = GetDecimalValue(dtgInventory.CurrentRow.Cells["height"].Value),
+                        Quantity = Convert.ToInt32(dtgInventory.CurrentRow.Cells["quantity"].Value),
+                        Cost = GetDecimalValue(dtgInventory.CurrentRow.Cells["cost"].Value)
+                    };
+
+                    UpdateForm uf = new UpdateForm(item, RefreshInventory);
+                    uf.ShowDialog();
+
+                    // Option 2: Create a separate UpdateInventoryItem form if needed
+                    // UpdateInventoryItem updateForm = new UpdateInventoryItem(item, RefreshInventory);
+                    // updateForm.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to load selected item for update: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

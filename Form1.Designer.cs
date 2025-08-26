@@ -33,8 +33,8 @@
             checkBox1 = new CheckBox();
             label2 = new Label();
             label1 = new Label();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            txtPassword = new TextBox();
+            txtUsername = new TextBox();
             button1 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -45,8 +45,8 @@
             panel1.Controls.Add(checkBox1);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtPassword);
+            panel1.Controls.Add(txtUsername);
             panel1.Location = new Point(72, 74);
             panel1.Name = "panel1";
             panel1.Size = new Size(503, 362);
@@ -97,22 +97,22 @@
             label1.TabIndex = 2;
             label1.Text = "Username:";
             // 
-            // textBox2
+            // txtPassword
             // 
-            textBox2.Font = new Font("Times New Roman", 12F);
-            textBox2.Location = new Point(163, 145);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(298, 30);
-            textBox2.TabIndex = 1;
+            txtPassword.Font = new Font("Times New Roman", 12F);
+            txtPassword.Location = new Point(163, 145);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(298, 30);
+            txtPassword.TabIndex = 1;
             // 
-            // textBox1
+            // txtUsername
             // 
-            textBox1.Font = new Font("Times New Roman", 12F);
-            textBox1.Location = new Point(163, 65);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(298, 30);
-            textBox1.TabIndex = 0;
-            textBox1.TextChanged += textBox1_TextChanged;
+            txtUsername.Font = new Font("Times New Roman", 12F);
+            txtUsername.Location = new Point(163, 65);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(298, 30);
+            txtUsername.TabIndex = 0;
+            txtUsername.TextChanged += textBox1_TextChanged;
             // 
             // button1
             // 
@@ -148,8 +148,8 @@
         private Button button1;
         private Label label2;
         private Label label1;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtPassword;
+        private TextBox txtUsername;
         private Button btnLogin;
         private CheckBox checkBox1;
     }

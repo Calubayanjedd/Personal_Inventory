@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            lblPrecision = new Label();
-            lblMaterial = new Label();
+            lblpartNumber = new Label();
             lblType = new Label();
             lblBase = new Label();
             label5 = new Label();
@@ -55,8 +53,6 @@
             lblPressureMin = new Label();
             lblPressureRange = new Label();
             label23 = new Label();
-            label24 = new Label();
-            txtNote = new TextBox();
             lblRadius = new Label();
             lblHeight = new Label();
             txtDiameter = new TextBox();
@@ -65,30 +61,25 @@
             lblCost = new Label();
             label8 = new Label();
             txtNewCost = new TextBox();
+            label2 = new Label();
+            btnExit = new Button();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(37, 65);
+            label1.Location = new Point(24, 22);
             label1.Name = "label1";
-            label1.Size = new Size(91, 22);
+            label1.Size = new Size(116, 22);
             label1.TabIndex = 0;
-            label1.Text = "Precision:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(37, 129);
-            label2.Name = "label2";
-            label2.Size = new Size(84, 22);
-            label2.TabIndex = 1;
-            label2.Text = "Material:";
+            label1.Text = "Part Number:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(37, 196);
+            label3.Location = new Point(36, 97);
             label3.Name = "label3";
             label3.Size = new Size(55, 22);
             label3.TabIndex = 2;
@@ -98,34 +89,25 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(37, 338);
+            label4.Location = new Point(36, 239);
             label4.Name = "label4";
             label4.Size = new Size(55, 22);
             label4.TabIndex = 3;
             label4.Text = "Base:";
             // 
-            // lblPrecision
+            // lblpartNumber
             // 
-            lblPrecision.AutoSize = true;
-            lblPrecision.Location = new Point(170, 65);
-            lblPrecision.Name = "lblPrecision";
-            lblPrecision.Size = new Size(17, 22);
-            lblPrecision.TabIndex = 4;
-            lblPrecision.Text = "-";
-            // 
-            // lblMaterial
-            // 
-            lblMaterial.AutoSize = true;
-            lblMaterial.Location = new Point(170, 129);
-            lblMaterial.Name = "lblMaterial";
-            lblMaterial.Size = new Size(17, 22);
-            lblMaterial.TabIndex = 5;
-            lblMaterial.Text = "-";
+            lblpartNumber.AutoSize = true;
+            lblpartNumber.Location = new Point(169, 22);
+            lblpartNumber.Name = "lblpartNumber";
+            lblpartNumber.Size = new Size(17, 22);
+            lblpartNumber.TabIndex = 4;
+            lblpartNumber.Text = "-";
             // 
             // lblType
             // 
             lblType.AutoSize = true;
-            lblType.Location = new Point(170, 196);
+            lblType.Location = new Point(169, 97);
             lblType.Name = "lblType";
             lblType.Size = new Size(17, 22);
             lblType.TabIndex = 6;
@@ -134,7 +116,7 @@
             // lblBase
             // 
             lblBase.AutoSize = true;
-            lblBase.Location = new Point(170, 338);
+            lblBase.Location = new Point(169, 239);
             lblBase.Name = "lblBase";
             lblBase.Size = new Size(17, 22);
             lblBase.TabIndex = 7;
@@ -143,7 +125,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(37, 266);
+            label5.Location = new Point(36, 173);
             label5.Name = "label5";
             label5.Size = new Size(64, 22);
             label5.TabIndex = 8;
@@ -152,7 +134,7 @@
             // lblShape
             // 
             lblShape.AutoSize = true;
-            lblShape.Location = new Point(170, 266);
+            lblShape.Location = new Point(169, 173);
             lblShape.Name = "lblShape";
             lblShape.Size = new Size(17, 22);
             lblShape.TabIndex = 9;
@@ -162,16 +144,16 @@
             // 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(452, 522);
+            comboBox1.Location = new Point(817, 94);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(297, 30);
+            comboBox1.Size = new Size(296, 30);
             comboBox1.TabIndex = 10;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(320, 525);
+            label6.Location = new Point(685, 97);
             label6.Name = "label6";
             label6.Size = new Size(91, 22);
             label6.TabIndex = 11;
@@ -179,7 +161,7 @@
             // 
             // btnDone
             // 
-            btnDone.Location = new Point(871, 554);
+            btnDone.Location = new Point(941, 616);
             btnDone.Name = "btnDone";
             btnDone.Size = new Size(202, 66);
             btnDone.TabIndex = 12;
@@ -190,7 +172,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(339, 399);
+            label7.Location = new Point(385, 383);
             label7.Name = "label7";
             label7.Size = new Size(82, 22);
             label7.TabIndex = 13;
@@ -198,7 +180,7 @@
             // 
             // txtQuantity
             // 
-            txtQuantity.Location = new Point(464, 399);
+            txtQuantity.Location = new Point(510, 383);
             txtQuantity.Name = "txtQuantity";
             txtQuantity.Size = new Size(68, 30);
             txtQuantity.TabIndex = 14;
@@ -207,7 +189,7 @@
             // lblBaseValue
             // 
             lblBaseValue.AutoSize = true;
-            lblBaseValue.Location = new Point(170, 399);
+            lblBaseValue.Location = new Point(169, 316);
             lblBaseValue.Name = "lblBaseValue";
             lblBaseValue.Size = new Size(17, 22);
             lblBaseValue.TabIndex = 16;
@@ -216,7 +198,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(37, 399);
+            label9.Location = new Point(36, 316);
             label9.Name = "label9";
             label9.Size = new Size(104, 22);
             label9.TabIndex = 15;
@@ -225,7 +207,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(37, 456);
+            label10.Location = new Point(36, 386);
             label10.Name = "label10";
             label10.Size = new Size(89, 22);
             label10.TabIndex = 17;
@@ -234,7 +216,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(37, 520);
+            label11.Location = new Point(36, 467);
             label11.Name = "label11";
             label11.Size = new Size(68, 22);
             label11.TabIndex = 18;
@@ -243,7 +225,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(329, 65);
+            label12.Location = new Point(358, 22);
             label12.Name = "label12";
             label12.Size = new Size(138, 22);
             label12.TabIndex = 19;
@@ -252,7 +234,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(329, 135);
+            label13.Location = new Point(358, 97);
             label13.Name = "label13";
             label13.Size = new Size(124, 22);
             label13.TabIndex = 20;
@@ -261,7 +243,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(329, 207);
+            label14.Location = new Point(358, 173);
             label14.Name = "label14";
             label14.Size = new Size(121, 22);
             label14.TabIndex = 21;
@@ -270,7 +252,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(350, 266);
+            label15.Location = new Point(396, 239);
             label15.Name = "label15";
             label15.Size = new Size(71, 22);
             label15.TabIndex = 22;
@@ -280,7 +262,7 @@
             // lblPressureMax
             // 
             lblPressureMax.AutoSize = true;
-            lblPressureMax.Location = new Point(515, 135);
+            lblPressureMax.Location = new Point(544, 97);
             lblPressureMax.Name = "lblPressureMax";
             lblPressureMax.Size = new Size(17, 22);
             lblPressureMax.TabIndex = 27;
@@ -289,7 +271,7 @@
             // lblPressureMin
             // 
             lblPressureMin.AutoSize = true;
-            lblPressureMin.Location = new Point(515, 207);
+            lblPressureMin.Location = new Point(544, 173);
             lblPressureMin.Name = "lblPressureMin";
             lblPressureMin.Size = new Size(17, 22);
             lblPressureMin.TabIndex = 26;
@@ -298,7 +280,7 @@
             // lblPressureRange
             // 
             lblPressureRange.AutoSize = true;
-            lblPressureRange.Location = new Point(515, 65);
+            lblPressureRange.Location = new Point(544, 22);
             lblPressureRange.Name = "lblPressureRange";
             lblPressureRange.Size = new Size(17, 22);
             lblPressureRange.TabIndex = 25;
@@ -307,33 +289,16 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(353, 338);
+            label23.Location = new Point(399, 316);
             label23.Name = "label23";
             label23.Size = new Size(68, 22);
             label23.TabIndex = 29;
             label23.Text = "Height:";
             // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.Location = new Point(691, 65);
-            label24.Name = "label24";
-            label24.Size = new Size(54, 22);
-            label24.TabIndex = 31;
-            label24.Text = "Note:";
-            // 
-            // txtNote
-            // 
-            txtNote.Location = new Point(691, 102);
-            txtNote.Multiline = true;
-            txtNote.Name = "txtNote";
-            txtNote.Size = new Size(447, 127);
-            txtNote.TabIndex = 32;
-            // 
             // lblRadius
             // 
             lblRadius.AutoSize = true;
-            lblRadius.Location = new Point(515, 268);
+            lblRadius.Location = new Point(544, 239);
             lblRadius.Name = "lblRadius";
             lblRadius.Size = new Size(17, 22);
             lblRadius.TabIndex = 28;
@@ -342,7 +307,7 @@
             // lblHeight
             // 
             lblHeight.AutoSize = true;
-            lblHeight.Location = new Point(515, 338);
+            lblHeight.Location = new Point(544, 316);
             lblHeight.Name = "lblHeight";
             lblHeight.Size = new Size(17, 22);
             lblHeight.TabIndex = 30;
@@ -350,14 +315,14 @@
             // 
             // txtDiameter
             // 
-            txtDiameter.Location = new Point(170, 453);
+            txtDiameter.Location = new Point(169, 383);
             txtDiameter.Name = "txtDiameter";
             txtDiameter.Size = new Size(68, 30);
             txtDiameter.TabIndex = 33;
             // 
             // txtLength
             // 
-            txtLength.Location = new Point(170, 517);
+            txtLength.Location = new Point(169, 464);
             txtLength.Name = "txtLength";
             txtLength.Size = new Size(68, 30);
             txtLength.TabIndex = 34;
@@ -365,7 +330,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(327, 461);
+            label16.Location = new Point(356, 472);
             label16.Name = "label16";
             label16.Size = new Size(123, 22);
             label16.TabIndex = 35;
@@ -374,7 +339,7 @@
             // lblCost
             // 
             lblCost.AutoSize = true;
-            lblCost.Location = new Point(515, 461);
+            lblCost.Location = new Point(544, 472);
             lblCost.Name = "lblCost";
             lblCost.Size = new Size(17, 22);
             lblCost.TabIndex = 36;
@@ -383,7 +348,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(691, 266);
+            label8.Location = new Point(736, 22);
             label8.Name = "label8";
             label8.Size = new Size(95, 22);
             label8.TabIndex = 37;
@@ -391,61 +356,97 @@
             // 
             // txtNewCost
             // 
-            txtNewCost.Location = new Point(827, 263);
+            txtNewCost.Location = new Point(856, 19);
             txtNewCost.Name = "txtNewCost";
-            txtNewCost.Size = new Size(157, 30);
+            txtNewCost.Size = new Size(145, 30);
             txtNewCost.TabIndex = 38;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Times New Roman", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(8, 5);
+            label2.Name = "label2";
+            label2.Size = new Size(596, 45);
+            label2.TabIndex = 39;
+            label2.Text = "Inventory to Customers Inventory";
+            // 
+            // btnExit
+            // 
+            btnExit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnExit.BackColor = Color.Red;
+            btnExit.ForeColor = Color.White;
+            btnExit.Location = new Point(1107, 12);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(73, 37);
+            btnExit.TabIndex = 40;
+            btnExit.Text = "✖";
+            btnExit.UseVisualStyleBackColor = false;
+            btnExit.Click += btnExit_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Silver;
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(txtNewCost);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(label8);
+            panel1.Controls.Add(lblpartNumber);
+            panel1.Controls.Add(lblCost);
+            panel1.Controls.Add(lblType);
+            panel1.Controls.Add(label16);
+            panel1.Controls.Add(lblBase);
+            panel1.Controls.Add(txtLength);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(txtDiameter);
+            panel1.Controls.Add(lblShape);
+            panel1.Controls.Add(lblHeight);
+            panel1.Controls.Add(comboBox1);
+            panel1.Controls.Add(label23);
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(lblRadius);
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(lblPressureMax);
+            panel1.Controls.Add(txtQuantity);
+            panel1.Controls.Add(lblPressureMin);
+            panel1.Controls.Add(label9);
+            panel1.Controls.Add(lblPressureRange);
+            panel1.Controls.Add(lblBaseValue);
+            panel1.Controls.Add(label15);
+            panel1.Controls.Add(label10);
+            panel1.Controls.Add(label14);
+            panel1.Controls.Add(label11);
+            panel1.Controls.Add(label13);
+            panel1.Controls.Add(label12);
+            panel1.Location = new Point(30, 70);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1127, 529);
+            panel1.TabIndex = 41;
             // 
             // AssigningCustomer
             // 
             AutoScaleDimensions = new SizeF(11F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1174, 657);
-            Controls.Add(txtNewCost);
-            Controls.Add(label8);
-            Controls.Add(lblCost);
-            Controls.Add(label16);
-            Controls.Add(txtLength);
-            Controls.Add(txtDiameter);
-            Controls.Add(txtNote);
-            Controls.Add(label24);
-            Controls.Add(lblHeight);
-            Controls.Add(label23);
-            Controls.Add(lblRadius);
-            Controls.Add(lblPressureMax);
-            Controls.Add(lblPressureMin);
-            Controls.Add(lblPressureRange);
-            Controls.Add(label15);
-            Controls.Add(label14);
-            Controls.Add(label13);
-            Controls.Add(label12);
-            Controls.Add(label11);
-            Controls.Add(label10);
-            Controls.Add(lblBaseValue);
-            Controls.Add(label9);
-            Controls.Add(txtQuantity);
-            Controls.Add(label7);
-            Controls.Add(btnDone);
-            Controls.Add(label6);
-            Controls.Add(comboBox1);
-            Controls.Add(lblShape);
-            Controls.Add(label5);
-            Controls.Add(lblBase);
-            Controls.Add(lblType);
-            Controls.Add(lblMaterial);
-            Controls.Add(lblPrecision);
-            Controls.Add(label4);
-            Controls.Add(label3);
+            BackColor = Color.White;
+            ClientSize = new Size(1192, 704);
+            Controls.Add(btnExit);
             Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(btnDone);
+            Controls.Add(panel1);
             Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
+            MaximumSize = new Size(1192, 704);
             MinimizeBox = false;
+            MinimumSize = new Size(1192, 704);
             Name = "AssigningCustomer";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AssigningCustomer";
             Load += AssigningCustomer_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -453,10 +454,9 @@
         #endregion
 
         private Label label1;
-        private Label label2;
         private Label label3;
         private Label label4;
-        private Label lblPrecision;
+        private Label lblpartNumber;
         private Label lblMaterial;
         private Label lblType;
         private Label lblBase;
@@ -489,5 +489,8 @@
         private Label lblCost;
         private Label label8;
         private TextBox txtNewCost;
+        private Label label2;
+        private Button btnExit;
+        private Panel panel1;
     }
 }

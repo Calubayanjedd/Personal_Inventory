@@ -33,6 +33,7 @@
             btnMinimize = new Button();
             btnExit = new Button();
             navPanel = new Panel();
+            btnHistory = new Button();
             btnLogout = new Button();
             fillerPanel = new Panel();
             btnReports = new Button();
@@ -65,14 +66,14 @@
             topPanel.Dock = DockStyle.Top;
             topPanel.Location = new Point(0, 0);
             topPanel.Name = "topPanel";
-            topPanel.Size = new Size(1569, 55);
+            topPanel.Size = new Size(1641, 55);
             topPanel.TabIndex = 0;
             // 
             // btnMinimize
             // 
             btnMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnMinimize.FlatStyle = FlatStyle.Flat;
-            btnMinimize.Location = new Point(1405, 10);
+            btnMinimize.Location = new Point(1477, 10);
             btnMinimize.Name = "btnMinimize";
             btnMinimize.Size = new Size(73, 36);
             btnMinimize.TabIndex = 4;
@@ -85,7 +86,7 @@
             btnExit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnExit.BackColor = Color.Red;
             btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(1484, 9);
+            btnExit.Location = new Point(1556, 9);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(73, 37);
             btnExit.TabIndex = 3;
@@ -96,8 +97,9 @@
             // navPanel
             // 
             navPanel.BackColor = Color.LightGray;
-            navPanel.Controls.Add(btnLogout);
             navPanel.Controls.Add(fillerPanel);
+            navPanel.Controls.Add(btnHistory);
+            navPanel.Controls.Add(btnLogout);
             navPanel.Controls.Add(btnReports);
             navPanel.Controls.Add(customerSubpanel);
             navPanel.Controls.Add(btnCustomer);
@@ -108,8 +110,24 @@
             navPanel.Dock = DockStyle.Left;
             navPanel.Location = new Point(0, 55);
             navPanel.Name = "navPanel";
-            navPanel.Size = new Size(250, 837);
+            navPanel.Size = new Size(250, 861);
             navPanel.TabIndex = 1;
+            // 
+            // btnHistory
+            // 
+            btnHistory.Dock = DockStyle.Top;
+            btnHistory.FlatAppearance.BorderSize = 0;
+            btnHistory.FlatAppearance.MouseOverBackColor = Color.White;
+            btnHistory.FlatStyle = FlatStyle.Flat;
+            btnHistory.Location = new Point(0, 642);
+            btnHistory.Name = "btnHistory";
+            btnHistory.Padding = new Padding(20, 0, 0, 0);
+            btnHistory.Size = new Size(250, 65);
+            btnHistory.TabIndex = 10;
+            btnHistory.Text = "📜 History";
+            btnHistory.TextAlign = ContentAlignment.MiddleLeft;
+            btnHistory.UseVisualStyleBackColor = true;
+            btnHistory.Click += btnHistory_Click;
             // 
             // btnLogout
             // 
@@ -117,7 +135,7 @@
             btnLogout.FlatAppearance.BorderSize = 0;
             btnLogout.FlatAppearance.MouseOverBackColor = Color.White;
             btnLogout.FlatStyle = FlatStyle.Flat;
-            btnLogout.Location = new Point(0, 772);
+            btnLogout.Location = new Point(0, 796);
             btnLogout.Name = "btnLogout";
             btnLogout.Padding = new Padding(20, 0, 0, 0);
             btnLogout.Size = new Size(250, 65);
@@ -130,9 +148,9 @@
             // fillerPanel
             // 
             fillerPanel.Dock = DockStyle.Fill;
-            fillerPanel.Location = new Point(0, 641);
+            fillerPanel.Location = new Point(0, 707);
             fillerPanel.Name = "fillerPanel";
-            fillerPanel.Size = new Size(250, 196);
+            fillerPanel.Size = new Size(250, 89);
             fillerPanel.TabIndex = 8;
             // 
             // btnReports
@@ -141,12 +159,12 @@
             btnReports.FlatAppearance.BorderSize = 0;
             btnReports.FlatAppearance.MouseOverBackColor = Color.White;
             btnReports.FlatStyle = FlatStyle.Flat;
-            btnReports.Location = new Point(0, 576);
+            btnReports.Location = new Point(0, 577);
             btnReports.Name = "btnReports";
             btnReports.Padding = new Padding(20, 0, 0, 0);
             btnReports.Size = new Size(250, 65);
             btnReports.TabIndex = 7;
-            btnReports.Text = "📢 Reports";
+            btnReports.Text = "📢 Backup and Restore";
             btnReports.TextAlign = ContentAlignment.MiddleLeft;
             btnReports.UseVisualStyleBackColor = true;
             btnReports.Click += btnReports_Click;
@@ -157,7 +175,7 @@
             customerSubpanel.Controls.Add(btnAddCustomer);
             customerSubpanel.Controls.Add(btnViewCustomer);
             customerSubpanel.Dock = DockStyle.Top;
-            customerSubpanel.Location = new Point(0, 386);
+            customerSubpanel.Location = new Point(0, 387);
             customerSubpanel.Name = "customerSubpanel";
             customerSubpanel.Size = new Size(250, 190);
             customerSubpanel.TabIndex = 6;
@@ -216,7 +234,7 @@
             btnCustomer.FlatAppearance.BorderSize = 0;
             btnCustomer.FlatAppearance.MouseOverBackColor = Color.White;
             btnCustomer.FlatStyle = FlatStyle.Flat;
-            btnCustomer.Location = new Point(0, 321);
+            btnCustomer.Location = new Point(0, 322);
             btnCustomer.Name = "btnCustomer";
             btnCustomer.Padding = new Padding(20, 0, 0, 0);
             btnCustomer.Size = new Size(250, 65);
@@ -233,7 +251,7 @@
             inventorySubpanel.Dock = DockStyle.Top;
             inventorySubpanel.Location = new Point(0, 190);
             inventorySubpanel.Name = "inventorySubpanel";
-            inventorySubpanel.Size = new Size(250, 131);
+            inventorySubpanel.Size = new Size(250, 132);
             inventorySubpanel.TabIndex = 4;
             // 
             // btnAddInventory
@@ -346,7 +364,7 @@
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(250, 55);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1319, 837);
+            mainPanel.Size = new Size(1391, 861);
             mainPanel.TabIndex = 2;
             mainPanel.Paint += mainPanel_Paint;
             // 
@@ -354,7 +372,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1569, 892);
+            ClientSize = new Size(1641, 916);
             Controls.Add(mainPanel);
             Controls.Add(navPanel);
             Controls.Add(topPanel);
@@ -395,5 +413,6 @@
         private Panel fillerPanel;
         private Button btnMinimize;
         private Button btnCInventory;
+        private Button btnHistory;
     }
 }

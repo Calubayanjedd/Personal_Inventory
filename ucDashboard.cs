@@ -17,9 +17,19 @@ namespace Personal_Inventory_for_Juntec
             InitializeComponent();
         }
 
-        
+
 
         private void ucDashboard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
         {
 
         }

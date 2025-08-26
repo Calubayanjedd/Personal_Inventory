@@ -9,15 +9,15 @@ namespace Personal_Inventory_for_Juntec
     public class InventoryItem
     {
         public int MaterialID { get; set; }
-        public string? PrecisionLevel { get; set; }
-        public string? Material { get; set; }
+
+        public string? PartNumber { get; set; }
         public string? Type { get; set; }
         public char ShapeCode { get; set; }
         public char BaseCode { get; set; }
         public decimal BaseValue { get; set; }
         public decimal Diameter { get; set; }
         public decimal Length { get; set; }
-        public required string PressureRange { get; set; }
+        public string? PressureRange { get; set; }
         public decimal PressureMax { get; set; }
         public decimal PressureMin { get; set; }
         public decimal RadiusTolerance { get; set; }

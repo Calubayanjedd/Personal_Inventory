@@ -67,6 +67,7 @@ namespace Personal_Inventory_for_Juntec
                 btnAddCustomer.Text = "➕👤 Add Customer";
                 btnCInventory.Text = "👤📦 Customer's Inventory";
                 btnReports.Text = "📢 Reports";
+                btnHistory.Text = "📜 History";
                 btnLogout.Text = "✖ Logout";
                 isCollapsed = false;
             }
@@ -82,6 +83,7 @@ namespace Personal_Inventory_for_Juntec
                 btnAddCustomer.Text = "➕👤";
                 btnCInventory.Text = "👤📦";
                 btnReports.Text = "📢";
+                btnHistory.Text = "📜";
                 btnLogout.Text = "✖";
                 isCollapsed = true;
             }
@@ -175,6 +177,12 @@ namespace Personal_Inventory_for_Juntec
         private void btnCInventory_Click(object sender, EventArgs e)
         {
             LoadUserControl(new ucCustomersInventory());
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            CollapseAllSubpanels();
+            LoadUserControl(new ucHistory());
         }
     }
 }
